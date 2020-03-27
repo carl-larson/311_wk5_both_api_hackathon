@@ -3,10 +3,7 @@
 // Justin
 
 const mysql = require('mysql')
-const pool = require('../mysql/connection')
-const employees = require("../employees"); // maybe, do I need this line?
-
-
+const pool = require('../mysql/connections')
 
 
 // Get All Employees
