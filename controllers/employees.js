@@ -3,13 +3,13 @@
 // Justin
 
 const mysql = require('mysql')
-const pool = require('../mysql/connections')
+const pool = require('../sql/connections')
 
 
 // Get All Employees
 function getEmployees() {
 
-    pool.query('SELECT * FROM employees', (err, rows) => {
+    pool.query('SELECT * FROM employees LIMIT 50', (err, rows) => {
         if (err) {
           console.log({ 'message': 'Error occurred: ' + err })
           return res.status(500).send('An unexpected error occurred')
@@ -26,7 +26,7 @@ function getEmployeesById() {
 
     const userId = req.params.id;
     let sql = `SELECT ??, ?? FROM ?? WHERE ?? = ? `
-    sql = mysql.format(sql, ['first_name', 'last_name', 'employees', 'id', userId])
+    sql = mysql.format(sql, ['first_name', 'last_name', 'employees', 'emp_no', userId])
 
     pool.query(sql, (err, rows) => {
         if (err) return handleSQLError(res, err)
@@ -39,14 +39,10 @@ function getEmployeesById() {
 
 // Get Employee First Name
 function getEmployeesByFirstName() {
-    const firstname = req.params.id;
+    const firstname = req.body.first_name;
     let sql = `SELECT ??, ?? FROM ?? WHERE ?? = ? `
     sql = mysql.format(sql, ['first_name', 'last_name', 'employees', 'first_name', firstname])
 }
-
-
-
-
 
 
 // Export back up to the Routes file
