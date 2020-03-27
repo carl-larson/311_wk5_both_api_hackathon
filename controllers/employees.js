@@ -29,7 +29,6 @@ function getEmployeesById(req, res) {
     sql = mysql.format(sql, ['first_name', 'last_name', 'employees', 'emp_no', userId])
         console.log(userId);
     pool.query(sql, (err, rows) => {
-        if (err) return handleSQLError(res, err)
         return res.json(rows);
     })
 
