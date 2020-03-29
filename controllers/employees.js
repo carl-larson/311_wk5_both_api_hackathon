@@ -21,7 +21,7 @@ function getEmployees(req, res) {
 
 // Get One Employee
 function getEmployeesById(req, res) {
-    const userId = req.params.emp_no;
+    const userId = req.params.id;
 
     let sql = `SELECT ?? FROM ?? WHERE ?? = ? `
     sql = mysql.format(sql, ['*', 'employees', 'emp_no', userId])
@@ -35,11 +35,10 @@ function getEmployeesById(req, res) {
         return res.json(rows);
     })
 
-
 }
 
 
-// Get Employee First Name
+// Get Employee byFirst Name
 function getEmployeesByFirstName(req, res) {
     const firstname = req.params.first_name;
 
@@ -53,10 +52,11 @@ function getEmployeesByFirstName(req, res) {
         }
         return res.json(rows);
     })
+
 }
 
 
-// Export back up to the Routes file
+
 module.exports = {
     getEmployees,
     getEmployeesById,
