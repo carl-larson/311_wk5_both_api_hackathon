@@ -1,9 +1,5 @@
-
-// Hackathon Controllers File
-// Justin
-
 const mysql = require('mysql')
-const pool = require('../sql/connection')
+const pool = require('../sql/connections')
 
 
 // Get All Employees
@@ -23,11 +19,10 @@ function getEmployees(req, res) {
 }
 
 
-
 // Get One Employee
 function getEmployeesById(req, res) {
-
     const userId = req.params.emp_no;
+
     let sql = `SELECT ?? FROM ?? WHERE ?? = ? `
     sql = mysql.format(sql, ['*', 'employees', 'emp_no', userId])
         console.log(userId);
@@ -44,10 +39,10 @@ function getEmployeesById(req, res) {
 }
 
 
-
 // Get Employee First Name
 function getEmployeesByFirstName(req, res) {
     const firstname = req.params.first_name;
+
     let sql = `SELECT ?? FROM ?? WHERE ?? = ? `
     sql = mysql.format(sql, ['*', 'employees', 'first_name', firstname])
 
