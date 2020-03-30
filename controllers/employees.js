@@ -42,9 +42,10 @@ function getEmployeesById(req, res) {
 
 // Get Employee First Name
 function getEmployeesByFirstName(req, res) {
-    const firstname = req.body.first_name;
+    const firstname = req.params.first_name;
     let sql = `SELECT ?? FROM ?? WHERE ?? = ? `
     sql = mysql.format(sql, ['*', 'employees', 'first_name', firstname])
+    console.log(firstname);
 }
 
 
